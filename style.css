@@ -1,0 +1,177 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+    --matcha-v-claro: #A4B080;
+    --matcha-marrom: #6D492F;
+    --fundo-card: rgba(255, 255, 255, 0.04);
+    --borda-fina: rgba(255, 255, 255, 0.08);
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background-image: url('/assets/foto10.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+body::before {
+    content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.72); z-index: -1;
+}
+
+/* TELA DE ENTRADA */
+.overlay {
+    position: fixed; 
+    top: 0; left: 0; width: 100%; height: 100%;
+    color: white;
+    background: #000; display: flex; justify-content: center; align-items: center; z-index: 1000; transition: opacity 1s ease;
+}
+
+.overlay-content{
+    text-align: center;
+   & h2{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+   }
+   
+}
+
+#start-btn {
+    padding: 15px 35px;
+
+     background: var(--matcha-marrom); border: none; border-radius: 50px;
+    color: white; font-weight: 600; cursor: pointer; box-shadow: 0 5px 20px rgba(255,255,255,0.1);
+}
+
+#start-btn:hover{
+    background: white;
+  color: var(--matcha-marrom);
+  font-size: large;
+  font-weight: 700;
+}
+
+/* ESTRUTURA PRINCIPAL */
+.timeline-container { max-width: 900px; margin: 0 auto; padding: 20px; position: relative; z-index: 1; }
+.main-header { text-align: center; margin: 50px 0 80px 0; 
+h1 { font-family: 'Playfair Display', serif; font-size: 3.2em; color: var(--matcha-v-claro); font-weight: 700; }}
+
+
+.date-label { font-size: 0.8em; text-transform: uppercase; letter-spacing: 3px; color: #bbb; margin-bottom: 30px; }
+
+/* CRONÔMETRO */
+.timer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; max-width: 420px; margin: 0 auto; }
+.timer-item { background: var(--fundo-card); padding: 15px 5px; border-radius: 18px; border: 1px solid var(--borda-fina); backdrop-filter: blur(10px); text-align: center; }
+.timer-item span { display: block; font-size: 1.6em; font-weight: 700; color: white; }
+.timer-item small { font-size: 0.6em; color: #bbb; text-transform: uppercase; }
+
+/* TIMELINE - O SEGREDO DO ALINHAMENTO */
+.timeline-item { 
+    display: flex; 
+    align-items: stretch; /* Faz o texto e a foto terem a mesma altura visual */
+    margin-bottom: 120px; 
+    gap: 40px; 
+}
+.timeline-item:nth-child(even) { flex-direction: row-reverse; }
+
+.timeline-content { 
+    flex: 1.2; /* Dá um pouco mais de espaço para o texto */
+    background: var(--fundo-card); 
+    padding: 35px; 
+    border-radius: 25px; 
+    border: 1px solid var(--borda-fina); 
+    backdrop-filter: blur(12px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centraliza o texto verticalmente */
+}
+
+.timeline-content h2 { font-family: 'Playfair Display', serif; font-size: 1.8em; color: var(--item-color, var(--matcha-v-claro)); margin-bottom: 15px; }
+.timeline-content .date { display: block; font-size: 0.75em; font-weight: 700; margin-bottom: 15px; color: white; letter-spacing: 1px; }
+.timeline-content p { line-height: 1.7; color: #eee; font-weight: 300; font-size: 0.95em; }
+
+.timeline-img { 
+    flex: 1; 
+    display: flex;
+}
+
+.timeline-img img { 
+    width: 100%; 
+    height: auto; /* Altura fixa para alinhar com o bloco de texto */
+    object-fit: cover; /* Corta a imagem sem distorcer para preencher o espaço */
+    border-radius: 20px; 
+    border: 1px solid rgba(255,255,255,0.1); 
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4); 
+}
+
+/* FRASE MÚSICA */
+.music-card-section { margin: 100px 0; text-align: center; }
+.music-card { background: var(--fundo-card); padding: 50px; border-radius: 30px; border: 1px solid var(--borda-fina); backdrop-filter: blur(15px); max-width: 550px; margin: 0 auto; }
+.music-card p { font-style: italic; color: #bbb; margin-bottom: 10px; font-family: 'Playfair Display', serif; }
+.music-card h3 { font-family: 'Playfair Display', serif; font-size: 2.3em; color: var(--matcha-v-claro); }
+
+/* MURAL AJUSTADO */
+.photo-mural { margin-top: 100px; text-align: center; }
+.mural-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; max-width: 800px; margin: 40px auto; background: var(--fundo-card); padding: 25px; border-radius: 25px; border: 1px solid var(--borda-fina); backdrop-filter: blur(8px); }
+.mural-grid img { width: 100%; height: 200px; object-fit: cover; border-radius: 12px; transition: 0.3s; }
+.mural-grid img:hover { transform: scale(1.04); }
+
+.heart-icon { font-size: 3.5em; animation: beat 2s infinite; }
+@keyframes beat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+.main-footer { text-align: center; 
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin: 80px 0; font-family: 'Playfair Display', serif; font-style: italic; color: #bbb; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px; }
+
+@media (max-width: 768px) {
+    .timeline-item, .timeline-item:nth-child(even) { flex-direction: column; text-align: center; }
+    .timeline-img img { height: 250px; } /* Foto menor no celular */
+    .mural-grid { grid-template-columns: repeat(2, 1fr); }
+    h1 { font-size: 2.4em; }
+}
+
+.floating-hearts {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.floating-hearts span {
+  position: absolute;
+  bottom: -30px;
+  color: white;
+  animation: rise 18s linear infinite;
+  font-size: 1.4rem;
+}
+
+.floating-hearts span:nth-child(1) { left: 6%; animation-duration: 18s; }
+.floating-hearts span:nth-child(2) { left: 18%; animation-duration: 13s; animation-delay: 2s; }
+.floating-hearts span:nth-child(3) { left: 32%; animation-duration: 16s; animation-delay: 4s; }
+.floating-hearts span:nth-child(4) { left: 46%; animation-duration: 20s; animation-delay: 1s; }
+.floating-hearts span:nth-child(5) { left: 58%; animation-duration: 17s; animation-delay: 5s; }
+.floating-hearts span:nth-child(6) { left: 71%; animation-duration: 15s; animation-delay: 3s; }
+.floating-hearts span:nth-child(7) { left: 84%; animation-duration: 19s; animation-delay: 6s; }
+.floating-hearts span:nth-child(8) { left: 92%; animation-duration: 14s; animation-delay: 2s; }
+.floating-hearts span:nth-child(9) { left: 40%; animation-duration: 14s; animation-delay: 2s; }
+.floating-hearts span:nth-child(10) { left: 20%; animation-duration: 10s; animation-delay: 2s; }
+.floating-hearts span:nth-child(11) { left: 60%; animation-duration: 14s; animation-delay: 2s; }
+.floating-hearts span:nth-child(12) { left: 80%; animation-duration: 14s; animation-delay: 2s; }
+.floating-hearts span:nth-child(13) { left: 95%; animation-duration: 14s; animation-delay: 2s; }
+.floating-hearts span:nth-child(14) { left: 10%; animation-duration: 14s; animation-delay: 2s; }
+.floating-hearts span:nth-child(15) { left: 65%; animation-duration: 14s; animation-delay: 2s; }
+
+@keyframes rise {
+  from {
+    transform: translateY(0) scale(1);
+    opacity: 0.45;
+  }
+  to {
+    transform: translateY(-120vh) scale(1.3);
+    opacity: 0.3;
+  }
+}
